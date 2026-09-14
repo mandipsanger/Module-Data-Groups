@@ -491,3 +491,23 @@ const quotes = [
 ];
 
 // call pickFromArray with the quotes array to check you get a random quote
+<<<<<<< HEAD
+=======
+
+// ----------------------------------
+// YOUR CODE GOES BELOW THE ARRAY
+// ----------------------------------
+
+function showRandomQuote() {
+  const randomQuote = pickFromArray(quotes);
+
+  document.getElementById("quote").textContent = randomQuote.quote;
+  document.getElementById("author").textContent = randomQuote.author;
+}
+
+// Show a random quote when the page loads
+showRandomQuote();
+
+// Show another random quote when button is clicked
+document.getElementById("new-quote").addEventListener("click", showRandomQuote);
+>>>>>>> 4dc8056 (adding deleted codes)
