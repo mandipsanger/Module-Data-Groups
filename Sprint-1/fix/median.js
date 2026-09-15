@@ -4,15 +4,16 @@
 
 // Hint: Please consider scenarios when 'list' doesn't have numbers (the function is expected to return null)
 // or 'list' has mixed values (the function is expected to sort only numbers).
+
 function calculateMedian(list) {
-  // Check that list is an array
+  // Check that the input is an array
   if (!Array.isArray(list)) {
-    throw new Error("calculateMedian requires an array");
+    throw new Error("calculateMedian requires an array of numbers");
   }
 
-  // Empty array returns null
+  // Check that the array is not empty
   if (list.length === 0) {
-    return null;
+    throw new Error("calculateMedian requires a non-empty array");
   }
 
   // Check that every item is a number
@@ -20,19 +21,22 @@ function calculateMedian(list) {
     throw new Error("calculateMedian requires an array of numbers");
   }
 
-  // Sort the numbers from smallest to largest
-  list.sort((a, b) => a - b);
+  // Make a copy so we don't modify the original array
+  const sortedList = [...list];
+
+  // Sort numbers from smallest to largest
+  sortedList.sort((a, b) => a - b);
 
   // Find the middle index
-  const middleIndex = Math.floor(list.length / 2);
+  const middleIndex = Math.floor(sortedList.length / 2);
 
   // Odd number of elements
-  if (list.length % 2 === 1) {
-    return list[middleIndex];
+  if (sortedList.length % 2 === 1) {
+    return sortedList[middleIndex];
   }
 
   // Even number of elements
-  return (list[middleIndex - 1] + list[middleIndex]) / 2;
+  return (sortedList[middleIndex - 1] + sortedList[middleIndex]) / 2;
 }
 
 module.exports = calculateMedian;
