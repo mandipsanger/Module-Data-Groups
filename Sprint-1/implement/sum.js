@@ -1,13 +1,13 @@
-function sum(elements) {
-  let total = 0;
-
-  for (let i = 0; i < elements.length; i++) {
-    if (typeof elements[i] === "number" && !isNaN(elements[i])) {
-      total += elements[i];
-    }
+function sum(list) {
+  if (!Array.isArray(list)) {
+    throw new Error("sum requires an array of numbers");
   }
 
-  return total;
+  if (!list.every((item) => typeof item === "number" && !Number.isNaN(item))) {
+    throw new Error("sum requires an array of numbers");
+  }
+
+  return list.reduce((total, number) => total + number, 0);
 }
 
 module.exports = sum;

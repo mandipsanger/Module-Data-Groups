@@ -1,18 +1,9 @@
-/* Sum the numbers in an array
-
-In this kata, you will need to implement a function that sums the numerical elements of an array
-
-E.g. sum([10, 20, 30]), target output: 60
-E.g. sum(['hey', 10, 'hi', 60, 10]), target output: 80 (ignore any non-numerical elements)
-*/
-
 const sum = require("./sum.js");
-// Acceptance Criteria:
+
 // Given an empty array
 // When passed to the sum function
 // Then it should return 0
-
-test("returns 0 for empty array", () => {
+test("returns 0 for an empty array", () => {
   const list = [];
   const currentOutput = sum(list);
   const targetOutput = 0;
@@ -23,54 +14,54 @@ test("returns 0 for empty array", () => {
 // Given an array with just one number
 // When passed to the sum function
 // Then it should return that number
-
-test("sum of 1 number", () => {
+test("returns the number when the array contains one number", () => {
   const list = [1];
   const currentOutput = sum(list);
-
   const targetOutput = 1;
+
   expect(currentOutput).toEqual(targetOutput);
 });
+
 // Given an array containing negative numbers
 // When passed to the sum function
 // Then it should still return the correct total sum
-
-test("sum of negative number in arrays", () => {
-  const list = [-5];
+test("returns the correct sum with negative numbers", () => {
+  const list = [-5, -10, 3];
   const currentOutput = sum(list);
-  const targetOutput = -5;
+  const targetOutput = -12;
+
   expect(currentOutput).toEqual(targetOutput);
 });
 
 // Given an array with decimal/float numbers
 // When passed to the sum function
 // Then it should return the correct total sum
-
-test("sum of decimal/float number in arrays", () => {
-  const list = [4.5, 2.5];
-  const currentOutput = sum(list);
-  const targetOutput = 7;
-  expect(currentOutput).toEqual(targetOutput);
-});
-
-// Given an array containing non-number values
-// When passed to the sum function
-// Then it should ignore the non-numerical values and return the sum of the numerical elements
-test("ignores non-number values", () => {
-  const list = ["hey", 10, "hi", 60, 10];
-  const currentOutput = sum(list);
-  const targetOutput = 80;
-
-  expect(currentOutput).toEqual(targetOutput);
-});
-
-test("ignores NaN values when calculating the sum", () => {
-  const list = [4, NaN, 6];
+test("returns the correct sum with decimal numbers", () => {
+  const list = [2.5, 3.5, 4];
   const currentOutput = sum(list);
   const targetOutput = 10;
 
   expect(currentOutput).toEqual(targetOutput);
 });
-// Given an array with only non-number values
+
+// Given an array containing a value that isn't a number
 // When passed to the sum function
-// Then it should return the least surprising value given how it behaves for all other inputs
+// Then it should throw Error("sum requires an array of numbers")
+test("throws an error when the array contains a non-number", () => {
+  expect(() => sum(["hey", 10, "hi", 60, 10])).toThrow(
+    new Error("sum requires an array of numbers")
+  );
+});
+
+// Given something that isn't an array at all
+// When passed to the sum function
+// Then it should throw Error("sum requires an array of numbers")
+test("throws an error when the input is not an array", () => {
+  expect(() => sum("hey")).toThrow(
+    new Error("sum requires an array of numbers")
+  );
+
+  expect(() => sum(42)).toThrow(new Error("sum requires an array of numbers"));
+
+  expect(() => sum()).toThrow(new Error("sum requires an array of numbers"));
+});
