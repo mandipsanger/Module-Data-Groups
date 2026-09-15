@@ -51,19 +51,13 @@ test("returns an empty object when given an empty array", () => {
 // Then it should throw Error("tally requires an array")
 
 test("throws an error when given a string", () => {
-  expect(() => tally("hello")).toThrow(
-    new Error("tally requires an array")
-  );
+  expect(() => tally("hello")).toThrow(new Error("tally requires an array"));
 });
 
 test("throws an error when given a number", () => {
-  expect(() => tally(42)).toThrow(
-    new Error("tally requires an array")
-  );
+  expect(() => tally(42)).toThrow(new Error("tally requires an array"));
 });
 
 test("throws an error when given no argument", () => {
-  expect(() => tally()).toThrow(
-    new Error("tally requires an array")
-  );
+  expect(() => tally()).toThrow(new Error("tally requires an array"));
 });
