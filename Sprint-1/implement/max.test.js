@@ -15,8 +15,6 @@ const findMax = require("./max.js");
 // Given an empty array
 // When passed to the findMax function
 // Then it should return -Infinity
-// Delete this test.todo and replace it with a test.
-
 test("returns -Infinity for an empty array", () => {
   const currentOutput = findMax([]);
   const targetOutput = -Infinity;
@@ -27,55 +25,65 @@ test("returns -Infinity for an empty array", () => {
 // Given an array with one number
 // When passed to the findMax function
 // Then it should return that number
-
-test("returns with one number", () => {
+test("returns the number when the array contains one number", () => {
   const currentOutput = findMax([3]);
   const targetOutput = 3;
+
   expect(currentOutput).toEqual(targetOutput);
 });
 
 // Given an array with both positive and negative numbers
 // When passed to the findMax function
 // Then it should return the largest number overall
-test("returns largest number", () => {
+test("returns the largest number", () => {
   const currentOutput = findMax([3, -10]);
   const targetOutput = 3;
+
   expect(currentOutput).toEqual(targetOutput);
 });
 
 // Given an array with just negative numbers
 // When passed to the findMax function
 // Then it should return the closest one to zero
-test("return closest to 0", () => {
+test("returns the number closest to zero", () => {
   const currentOutput = findMax([-7, -3, -10]);
   const targetOutput = -3;
+
   expect(currentOutput).toEqual(targetOutput);
 });
 
 // Given an array with decimal numbers
 // When passed to the findMax function
 // Then it should return the largest decimal number
-test("return to largest decimal number", () => {
+test("returns the largest decimal number", () => {
   const currentOutput = findMax([2.5, 5.6]);
   const targetOutput = 5.6;
+
   expect(currentOutput).toEqual(targetOutput);
 });
 
-// Given an array with non-number values
+// Given an array containing a value that isn't a number
 // When passed to the findMax function
-// Then it should return the findMax and ignore non-numeric values
-
-test("return to findMax and ignore non-numeric values", () => {
-  const currentOutput = findMax([7, 4, -10, "b", "f"]);
-  const targetOutput = 7;
-  expect(currentOutput).toEqual(targetOutput);
+// Then it should throw Error("findMax requires an array of numbers")
+test("throws an error when the array contains a non-number", () => {
+  expect(() => findMax(["hey", 10, "hi", 60, 10])).toThrow(
+    new Error("findMax requires an array of numbers")
+  );
 });
 
-// Given an array with only non-number values
+// Given something that isn't an array at all
 // When passed to the findMax function
-// Then it should return the least surprising value given how it behaves for all other inputs
-test("return the least surprising value", () => {
-  const currentOutput = findMax([NaN, "hi", true]);
-  const targetOutput = -Infinity;
-  expect(currentOutput).toEqual(targetOutput);
+// Then it should throw Error("findMax requires an array of numbers")
+test("throws an error when the input is not an array", () => {
+  expect(() => findMax("hey")).toThrow(
+    new Error("findMax requires an array of numbers")
+  );
+
+  expect(() => findMax(42)).toThrow(
+    new Error("findMax requires an array of numbers")
+  );
+
+  expect(() => findMax()).toThrow(
+    new Error("findMax requires an array of numbers")
+  );
 });
