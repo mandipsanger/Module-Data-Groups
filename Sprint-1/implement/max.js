@@ -1,13 +1,13 @@
-function findMax(elements) {
-  const numbersOnly = elements.filter(
-    (item) => typeof item === "number" && !Number.isNaN(item)
-  );
-  if (numbersOnly.length === 0) {
-    return -Infinity;
+function findMax(list) {
+  if (!Array.isArray(list)) {
+    throw new Error("findMax requires an array of numbers");
   }
-  const sorted = [...numbersOnly].sort((a, b) => a - b);
-  const max = sorted[sorted.length - 1];
-  return max;
+
+  if (!list.every((item) => typeof item === "number" && !Number.isNaN(item))) {
+    throw new Error("findMax requires an array of numbers");
+  }
+
+  return Math.max(...list);
 }
 
 module.exports = findMax;
