@@ -1,4 +1,5 @@
 // DO NOT EDIT BELOW HERE
+<<<<<<< HEAD
 
 // pickFromArray is a function which will return one item, at
 // random, from the given array.
@@ -16,6 +17,9 @@
 // pickFromArray(['a','b','c','d'])     // maybe returns 'c'
 
 // You don't need to change this function
+=======
+//
+>>>>>>> 16e7a5b (checking errors)
 function pickFromArray(choices) {
   return choices[Math.floor(Math.random() * choices.length)];
 }
