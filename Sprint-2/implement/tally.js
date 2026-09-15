@@ -1,23 +1,19 @@
-function tally(array) {
-  const charCount = {};
-
-  if (!Array.isArray(array)) {
-    throw new Error();
+function tally(list) {
+  if (!Array.isArray(list)) {
+    throw new Error("tally requires an array");
   }
 
-  if (array.length === 0) {
-    return charCount;
-  }
+  const result = {};
 
-  for (const char of array) {
-    if (charCount[char]) {
-      charCount[char]++;
+  for (const item of list) {
+    if (result[item]) {
+      result[item]++;
     } else {
-      charCount[char] = 1;
+      result[item] = 1;
     }
   }
 
-  return charCount;
+  return result;
 }
 
 module.exports = tally;
