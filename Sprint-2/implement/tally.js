@@ -6,7 +6,7 @@ function tally(list) {
   const result = {};
 
   for (const item of list) {
-    if (result[item]) {
+    if (Object.hasOwn(result, item)) {
       result[item]++;
     } else {
       result[item] = 1;
